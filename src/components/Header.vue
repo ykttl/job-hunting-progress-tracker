@@ -4,8 +4,6 @@
       Let's send
       <input type="number" min="0" v-model="inputNum"> resumes!
     </h1>
-
-    <p>{{cellsNum}}</p>
   </div>
 </template>
 
