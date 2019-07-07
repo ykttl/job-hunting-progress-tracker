@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    //this.getServerData();
+    this.getServerData();
   },
   updated() {
     this.createCells();
@@ -65,6 +65,7 @@ export default {
     },
     createCells() {
       // this.getServerData();
+      console.log(this.cellsNum, "cellsnmu");
       const arr = [];
       const num = parseInt(this.cellsNum);
       for (let i = 0; i < num; i++) {
@@ -83,18 +84,26 @@ export default {
           note: ""
         });
       }
-      this.resumeData = arr;
+      // this.resumeData = arr;
+      console.log(arr);
+      console.log(this.dataFromServer);
 
-      // const newnew = this.resumeData.map(resumeItem => {
-      //   this.dataFromServer.map(serverItem => {
-      //     if (resumeItem.number === serverItem.number) {
-      //       console.log("haaaa");
-      //       resumeItem = serverItem;
-      //     }
-      //   });
-      // });
+      const are = [...arr, ...this.dataFromServer];
+      console.log(are, "are?");
 
-      // this.resumeData = newnew;
+      const newnew = arr.map(resumeItem => {
+        this.dataFromServer.map(serverItem => {
+          if (resumeItem.number === serverItem.number) {
+            console.log("haaaa");
+            resumeItem = serverItem;
+          } else {
+            resumeItem;
+          }
+        });
+        return this.dataFromServer;
+      });
+      console.log(newnew);
+      this.resumeData = newnew[0];
 
       console.log(this.resumeData);
     }
